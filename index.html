@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap-icons-1.10.5/font/bootstrap-icons.min.css">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+       main {
+            width: 100%;
+            height: 100vh;
+            background-color: rgb(5, 5, 4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 450px;
+            height: 300px;
+            border: 1px solid rgb(146, 205, 18);
+            background-color: rgb(255, 180, 82);
+            padding: 10px;
+            box-shadow: 2px 2px 10px white;
+            border-radius: 10px;
+
+        }
+
+        #icon {
+            display: none;
+            color: rgb(224, 40, 12);
+            font-size: 30px;
+            cursor: pointer;
+
+          
+            
+        } 
+
+        input {
+            width: 90%;
+            height: 50px;
+            font-size: 25px;
+            background-color: coral;
+            box-shadow: 2px 2px 10px white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        p{
+            width:100%;
+            height:50px;
+            font-size: 25px;
+            /* border:2px solid red; */
+           
+        }
+        button{
+            font-size: 35px;
+            border-radius: 50%;
+            padding:2px;
+            background-color: burlywood;
+            cursor: pointer;
+            box-shadow: 2px 2px 10px white;
+        }
+ 
+    </style>
+</head>
+
+<body>
+<main>
+    <div class="container">
+        <h1>Todo list</h1>
+        <input type="text" id="input" placeholder="Type text ...">
+        <button id="plus">+</button>
+        <div class="todos" id="todoconatiner"> <span id="icon"><i class="bi bi-x"></i></span></div>
+    </main>
+
+    </div>
+    <script>
+        let _addbtn = document.getElementById('plus')
+        let _input = document.querySelector('#input');
+        let todo = document.querySelector('.todos');
+        _addbtn.addEventListener("click", function () {
+            let _p = document.createElement('p');
+            _p.classList.add('.icon')
+            _p.innerHTML = _input.value
+            todo.appendChild(_p)
+            _input.value = " "
+            _p.addEventListener('click', () => {
+                _p.style.textDecoration = 'line-through'
+                _p.style.color = 'aqua'
+                _p.style.cursor = 'pointer'
+                document.getElementById('icon').style.display = 'flex'
+            })
+            _p.addEventListener('dblclick', () => {
+                todo.removeChild(_p)
+                document.getElementById('icon').style.display = 'none'
+
+
+            })
+            document.getElementById('icon').addEventListener('click', () => {
+                todo.removeChild(_p)
+                document.getElementById('icon').style.display = 'none'
+
+            })
+
+        })
+    </script>
+
+</body>
+
+</html>
